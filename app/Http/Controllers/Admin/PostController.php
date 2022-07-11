@@ -114,6 +114,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // 11. task -> if in table onDelete is not cascade need detach()
+
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
