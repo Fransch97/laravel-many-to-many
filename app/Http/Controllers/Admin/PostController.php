@@ -50,6 +50,10 @@ class PostController extends Controller
         $new_post->slug = $new_post->slugGen($new_post->title);
         $new_post->save();
 
+        if(array_key_exists('tags', $data)){
+            $new_post->tags()->attach($data['tags']);
+        }
+
         return redirect()->route('admin.posts.index');
     }
 
@@ -92,6 +96,10 @@ class PostController extends Controller
         $post_saver = $request->all();
 
         $post->update($post_saver);
+
+        if(array_key_exists('tags', $post_saver)){
+            $post->tags()->sync($post_saver['tags']);
+        }
 
         return redirect()->route('admin.posts.index');
     }
