@@ -99,6 +99,8 @@ class PostController extends Controller
 
         if(array_key_exists('tags', $post_saver)){
             $post->tags()->sync($post_saver['tags']);
+        }else{
+            $post->tags()->detach();
         }
 
         return redirect()->route('admin.posts.index');
