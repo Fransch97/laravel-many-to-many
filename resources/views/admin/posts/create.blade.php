@@ -34,6 +34,10 @@
             name="tags[]"
             id="{{$tag->id}}"
 
+            @if (in_array($tag->id, old('tags',[])))
+                checked
+            @endif
+
             value ="{{$tag->id}}"
             >
             <label class="mr-3" for="{{$tag->id}}">{{$tag->name}}</label>
