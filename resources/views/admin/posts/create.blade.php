@@ -27,6 +27,20 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="mb-3">
+            @foreach ($tags as $tag )
+            <input type="checkbox"
+            name="tags[]"
+            id="{{$tag->id}}"
+
+            value ="{{$tag->id}}"
+            >
+            <label class="mr-3" for="{{$tag->id}}">{{$tag->name}}</label>
+            @endforeach
+        </div>
+
+
         <button type="submit" id="creade-sub" class="btn btn-primary">Create</button>
       </form>
 </div>
